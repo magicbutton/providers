@@ -2,6 +2,7 @@
   "name": "@magicbutton-cloud/providers",
   "version": "0.1.0",
   "private": true,
+  "description": "Magic Button Cloud Providers Monorepo",
   "workspaces": [
     "packages/*"
   ],
