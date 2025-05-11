@@ -1,0 +1,9 @@
+packages:
+  # Include providers packages
+  - 'providers/*'
+  # Include core messaging library
+  - 'messaging'
+  # Include auth module
+  - 'auth'
+  # Include state management package
+  - 'state'
