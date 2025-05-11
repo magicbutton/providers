@@ -1,0 +1,62 @@
+{
+  "name": "@magicbutton.cloud/nats-transport",
+  "version": "0.1.1",
+  "description": "NATS transport provider for Magic Button Cloud messaging library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "test": "jest",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "nats",
+    "messaging",
+    "transport",
+    "magicbutton.cloud"
+  ],
+  "author": "Magic Button Cloud Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magicbutton-cloud/providers.git",
+    "directory": "providers/nats"
+  },
+  "bugs": {
+    "url": "https://github.com/magicbutton-cloud/providers/issues"
+  },
+  "homepage": "https://github.com/magicbutton-cloud/providers/tree/main/providers/nats#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@magicbutton.cloud/messaging": "^0.1.0"
+  },
+  "dependencies": {
+    "nats": "^2.17.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0",
+    "rimraf": "^5.0.1",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
