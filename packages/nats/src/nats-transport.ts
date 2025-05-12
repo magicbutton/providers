@@ -19,7 +19,6 @@ export class NatsTransport implements Transport {
   private jsonCodec = JSONCodec();
   
   constructor(config: NatsTransportConfig) {
-    super();
     this.config = {
       ...config,
       connectTimeout: config.connectTimeout || 10000,
@@ -61,14 +60,16 @@ export class NatsTransport implements Transport {
       
       // Handle disconnect
       (async () => {
-        for await (const status of this.nats.status()) {
-          if (status.type === 'disconnect') {
-            this.connected = false;
-            if (this.messageCallback) {
-              this.messageCallback({
-                type: 'system:disconnected',
-                payload: { reason: status.data }
-              });
+        if (this.nats) {
+          for await (const status of this.nats.status()) {
+            if (status.type === 'disconnect') {
+              this.connected = false;
+              if (this.messageCallback) {
+                this.messageCallback({
+                  type: 'system:disconnected',
+                  payload: { reason: status.data }
+                });
+              }
             }
           }
         }
@@ -181,7 +182,7 @@ export class NatsTransport implements Transport {
   
   private async processSubscription(
     subscription: Subscription,
-    handler: (subject: string, headers: typeof headers | undefined, data: any) => void
+    handler: (subject: string, msgHeaders: ReturnType<typeof headers> | undefined, data: any) => void
   ): Promise<void> {
     // Handle messages from subscription
     (async () => {
